@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+option csharp_namespace = "EntityFrameworkBLL.Protos";
+
+service Warehouses {
+  rpc GetAll (GetAllWarehousesRequest) returns (WarehousesResponse);
+  rpc GetById (GetWarehouseByIdRequest) returns (WarehouseResponse);
+}
+
+message GetAllWarehousesRequest { }
+
+message GetWarehouseByIdRequest {
+  int32 id = 1;
+}
+
+message WarehouseResponse {
+  int32 Id = 1;
+  int32 SupplierId = 2;
+  string SupplierCompanyName = 3;
+  int32 CategoryId = 4;
+  string CategoryName = 5;
+  string Image = 6;
+  string Name = 7;
+  int32 Quantity = 8;
+  double PurchasePrice = 9;
+  double SellPrice = 10;
+  string Description = 11;
+}
+
+message WarehousesResponse {
+  repeated WarehouseResponse data = 1;
+}
